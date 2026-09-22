@@ -1,0 +1,27 @@
+data:
+  - namespace: "task-api-a"
+    sharedsecret:
+      - "lolipop-secret"
+    sharedconfigmap:
+      - "wasapmen-cm"
+    deploymentconfigs:
+      - name: "teletubis-dc"
+        newname: "new-teletubis"
+        testsvc: true
+        labels: []
+        annotations: []
+        containers:
+          - name: "teletubis"
+            secrets:
+              - "lolipop-secret"
+              - "teletubis-secret"
+            configmap:
+              - "config-teletubis"
+              - "wasapmen-cm"
+            env:
+              - "APP_MODE"
+            useexisting:
+              secrets: []
+              configmap: []
+              env: []
+    deployments: []
